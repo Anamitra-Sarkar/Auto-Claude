@@ -48,9 +48,27 @@ claude setup-token
 
 **Step 4:** Create a spec interactively (also sets up Python environment)
 
+You have two options:
+
+**Option 1:** Using Claude Code CLI in terminal
+
 ```bash
-claude /spec
+# Start Claude Code
+claude
+
+# Then write:
+/spec "whatever you want to create"
 ```
+
+**Option 2:** Using your favorite IDE (like Cursor)
+
+Open your IDE's AI agent chat and write:
+
+```
+/spec "whatever you want to create"
+```
+
+The spec agent will guide you through creating a detailed specification and set up the Python environment automatically.
 
 **Step 5:** Activate the virtual environment and run
 
