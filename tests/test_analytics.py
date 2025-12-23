@@ -394,10 +394,14 @@ class TestPrivacy:
         serialized = json.dumps(data)
 
         # Check that no common code keywords are in the serialized data
-        # (other than what might be in phase names)
-        assert "function" not in serialized.lower() or "function" in "functional"
-        assert "import" not in serialized.lower()
-        assert "class " not in serialized.lower()
+        # The serialized data should only contain metadata, not code
+        serialized_lower = serialized.lower()
+        
+        # Check for code-related keywords that shouldn't appear in metrics
+        # Note: "import" and "class " are specific patterns unlikely in metric names
+        assert "import " not in serialized_lower
+        assert "class " not in serialized_lower
+        assert "def " not in serialized_lower
 
     def test_only_metadata_stored(self):
         """Only metadata is stored, not file contents."""

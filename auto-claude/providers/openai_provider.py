@@ -157,7 +157,10 @@ that the framework can apply."""
             "model": model,
             "context_window": context_windows.get(model, 128000),
             "max_output_tokens": 4096,
-            "supports_tools": True,
+            # Note: OpenAI API supports tools, but this provider uses basic
+            # chat completions for simplicity. Full tool support would require
+            # implementing the function calling API.
+            "supports_tools": False,
             "supports_extended_thinking": model.startswith("o1"),
             "pricing_per_million": pricing.get(model, {"input": 2.5, "output": 10.0}),
         }
